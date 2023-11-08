@@ -29,3 +29,14 @@ Route::get('/categories/{id}', function ($id) {
 
 Route::get('/create-category', [CategoryController::class, 'createCategory']);
 Route::post('/submit-category', [CategoryController::class, 'submitCategory']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        $users = User::all();
+        return view('pages.users', ['users' => $users]);
+    })->name('dashboard');
+});

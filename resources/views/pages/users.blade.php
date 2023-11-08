@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('title')
-<title> Lab Act 1: Users </title>
-@endsection
-
 @section('content')
 <h2 class="text-center"> Users </h2>
 <table class="table table-striped table-hover">

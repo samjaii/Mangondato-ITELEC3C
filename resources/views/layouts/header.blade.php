@@ -6,8 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="{{ URL::asset('/') }}">Home</a>
-                <a class="nav-link" href="{{ URL::asset('/users') }}">Users</a>
+                <a class="nav-link" href="{{ URL::asset('/') }}">Users</a>
                 <a class=" nav-link" href="{{ URL::asset('/categories') }}">Categories</a>
             </div>
         </div>

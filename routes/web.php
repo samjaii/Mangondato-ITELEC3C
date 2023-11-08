@@ -16,14 +16,15 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-
-    return view('pages.index');
-});
-
-Route::get('/users', function () {
     $users = User::all();
 
     return view('pages.users', ['users' => $users]);
 });
 
 Route::get('/categories', [CategoryController::class, 'showCategory']);
+
+Route::get('/categories/{id}', function ($id) {
+    $item = App\Models\Category::where('id', '=', $id)->firstOrFail();
+
+    return view('pages.category', compact('item'));
+});

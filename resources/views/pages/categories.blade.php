@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title> Final Lab Act 1: Categories </title>
+<title> Lab Act 1: Categories </title>
 @endsection
 
 @section('content')
@@ -10,22 +10,22 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Created At</th>
             <th scope="col">Updated At</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach($categories as $cat)
         <tr>
             <td>{{ $cat->id }}</td>
-            <td><img src="{{ $cat->image }}" class="img-fluid" width="150"></td>
             <td>{{ $cat->name }}</td>
             <td>{{ $cat->description }}</td>
             <td>{{ $cat->created_at}}</td>
             <td>{{ $cat->updated_at}}</td>
+            <td><a href="/categories/{{ $cat->id }}" class="btn btn-dark" type="button">View </a></td>
         </tr>
         @endforeach
     </tbody>

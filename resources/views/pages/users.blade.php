@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title> Final Lab Act 1: Users </title>
+<title> Lab Act 1: Users </title>
 @endsection
 
 @section('content')

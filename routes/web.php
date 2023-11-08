@@ -17,7 +17,6 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     $users = User::all();
-
     return view('pages.users', ['users' => $users]);
 });
 
@@ -25,6 +24,8 @@ Route::get('/categories', [CategoryController::class, 'showCategory']);
 
 Route::get('/categories/{id}', function ($id) {
     $item = App\Models\Category::where('id', '=', $id)->firstOrFail();
-
     return view('pages.category', compact('item'));
 });
+
+Route::get('/create-category', [CategoryController::class, 'createCategory']);
+Route::post('/submit-category', [CategoryController::class, 'submitCategory']);

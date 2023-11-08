@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if(session('status'))
+<div class="alert alert-success">
+    {{ session('status') }}
+</div>
+@endif
 <h2 class="text-center"> Categories </h2>
 <table class="table table-striped table-hover">
     <thead>

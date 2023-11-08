@@ -7,7 +7,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="{{ URL::asset('/') }}">Users</a>
-                <a class=" nav-link" href="{{ URL::asset('/categories') }}">Categories</a>
+                <a class="nav-link" href="{{ URL::asset('/categories') }}">Categories</a>
+                <a class="nav-link" href="{{ URL::asset('/create-category') }}">Create Category</a>
             </div>
         </div>
     </div>

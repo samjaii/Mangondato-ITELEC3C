@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('pages.index');
 });
 
 Route::get('/users', function () {
@@ -23,3 +25,5 @@ Route::get('/users', function () {
 
     return view('pages.users', ['users' => $users]);
 });
+
+Route::get('/categories', [CategoryController::class, 'showCategory']);

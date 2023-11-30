@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
-use Illuminated;
+use File;
 
 class CategoryController extends Controller
 {
+
 
     public function create(Request $request)
     {
@@ -23,15 +25,21 @@ class CategoryController extends Controller
     }
 
     public function submit(Request $request)
+
     {
         $this->validate(request(), [
             'cat_name' => 'required|min:2|max:255',
             'cat_desc' => 'required|min:2|max:255',
+            'cat_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
+        $fileName = time() . '.' . $request->cat_image->extension();
+        $request->image->storeAs('public/category', $fileName);
 
         $category = new Category;
         $category->name = $request->cat_name;
         $category->description = $request->cat_desc;
+        $category->image = $fileName;
         $category->save();
 
         return redirect('/categories')->with('status', 'ADDED SUCCESSFULLY');
@@ -39,14 +47,24 @@ class CategoryController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $this->validate(request(), [
-            'cat_name' => 'required|min:2|max:255',
-            'cat_desc' => 'required|min:2|max:255',
-        ]);
-
         $category = Category::find($id);
         $category->name = $request->cat_name;
         $category->description = $request->cat_desc;
+
+        if ($request->hasfile('cat_image')) {
+            $destination = 'storage/category' . $category->image;
+
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+
+            $file = $request->file('cat_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . 'edited' . '.' . $extension;
+            $file->move('storage/category', $filename);
+            $category->image = $filename;
+        }
+
         $category->update();
 
         return redirect('/categories')->with('status', 'EDITED SUCCESSFULLY');
@@ -59,6 +77,8 @@ class CategoryController extends Controller
         return redirect('/categories')->with('status', 'DELETED SUCCESSFULLY');
     }
 
+
+    // Edits the record
 
 
 

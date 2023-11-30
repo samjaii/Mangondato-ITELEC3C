@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('title')
-<title> Lab Act 1: Create Category </title>
+<title> FINAL LAB ACT 2 </title>
 @endsection
 
 @section('content')
 
-<form method="POST" action="{{ url('/submit') }}">
+<form method="POST" action="{{ url('/submit') }}" enctype="multipart/form-data">
 
     @if(count($errors))
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
+    <div class=" alert alert-danger">
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
     </div>
     @endif
 
@@ -28,6 +28,10 @@
         <div class="col-md-12 my-2">
             <label> Description: </label>
             <input type="text" name="cat_desc" id="#" class="form-control">
+        </div>
+        <div class="col-md-12 my-2">
+            <label for="image">Image:</label>
+            <input type="file" name="cat_image" id="#" class="form-control" accept="image/*">
         </div>
         <div class="col-md-12 my-4">
             <button type="submit" class="btn btn-dark w-100"> Submit </button>

@@ -45,11 +45,20 @@ Route::get('/categories/edit/{id}', function ($id) {
 
 Route::get('/create', [CategoryController::class, 'create']);
 
+// BAGONG LAGAY
+Route::post('/save-record', [ProductController::class, 'save']);
+Route::post('/submit', [ProductController::class, 'submit']);
+
+
 /* Edits record */
 Route::put('/edit-category/{id}', [CategoryController::class,  'edit']);
 
 /* Creates new record */
 Route::post('/submit', [CategoryController::class, 'submit']);
+
+/* Update record  BAGONG LAGAY */
+Route::put('/update-category/{id}', [CategoryController::class, 'update']);
+
 
 /* Delete record */
 Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy']);

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-<title> Lab Act 1: Create Category </title>
+<title> FINAL LAB ACT2 </title>
 @endsection
 
 @section('content')
 
-<form method="POST" action="{{ url('edit-category/'.$item->id) }}">
+<form method="POST" action="{{ url('edit-category/'.$item->id) }}" enctype="multipart/form-data">
 
     @if(count($errors))
     <div class="alert alert-danger">
@@ -30,6 +30,10 @@
         <div class=" col-md-12 my-2">
             <label> Description: </label>
             <input type="text" name="cat_desc" id="#" class="form-control" value="{{ $item->description }}">
+        </div>
+        <div class="col-md-12 my-2">
+            <label for="image">Image:</label>
+            <input type="file" name="cat_image" id="#" class="form-control" accept="image/*">
         </div>
         <div class="col-md-12 my-4">
             <button type="submit" class="btn btn-success w-100"> Update Record </button>

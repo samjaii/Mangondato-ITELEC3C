@@ -34,7 +34,7 @@ class CategoryController extends Controller
         ]);
 
         $fileName = time() . '.' . $request->cat_image->extension();
-        $request->image->storeAs('public/category', $fileName);
+        $request->cat_image->storeAs('public/category', $fileName);
 
         $category = new Category;
         $category->name = $request->cat_name;

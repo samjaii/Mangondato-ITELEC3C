@@ -31,20 +31,21 @@
     <tbody>
         @foreach($categories as $cat)
         <form method="POST" action="{{ url('delete-category/'.$cat->id) }}">
-        @method("DELETE")
-        @csrf
+            @method("DELETE")
+            @csrf
 
-        <tr>
-            <td>{{ $cat->id }}</td>
-            <td>{{ $cat->name }}</td>
-            <td>{{ $cat->description }}</td>
-            <td>{{ $cat->created_at->diffForHumans() }}</td>
-            <td>{{ $cat->updated_at->diffForHumans() }}</td>
-            <td><a href="/categories/{{ $cat->id }}" class="btn btn-success" type="button">VIEW</a>
-            <a href="/categories/edit/{{ $cat->id }}" class="btn btn-primary" type="button">EDIT</a>
-            <button class="btn btn-danger" type="submit">DELETE</a></td>
-        </tr>
-        @endforeach     
+            <tr>
+                <td>{{ $cat->id }}</td>
+                <td>{{ $cat->name }}</td>
+                <td>{{ $cat->description }}</td>
+                <td>{{ $cat->created_at->diffForHumans() }}</td>
+                <td>{{ $cat->updated_at->diffForHumans() }}</td>
+                <td><a href="/categories/{{ $cat->id }}" class="btn btn-success" type="button">VIEW</a>
+                    <a href="/categories/edit/{{ $cat->id }}" class="btn btn-primary" type="button">EDIT</a>
+                    <button class="btn btn-danger" type="submit">DELETE</a>
+                </td>
+            </tr>
+            @endforeach
         </form>
 
     </tbody>
